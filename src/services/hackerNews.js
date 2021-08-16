@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { initStory, initAuthor, initComment } from '../constants/data';
-import { shuffleArray } from '../helpers';
+import { shuffleArray } from '../util/helpers';
 
 // Get a list with up to 500 top stories
 export const getTopStories = async () => {

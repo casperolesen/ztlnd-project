@@ -46,7 +46,7 @@ import {
   getAuthorsList,
   getLatestStoryByAuthor,
 } from "./services/hackerNews";
-import { sortAuthorsByKarma, sortByScore, sortMap } from "./helpers";
+import { sortAuthorsByKarma, sortByScore, sortMap } from "./util/helpers";
 import Stories from "./components/Stories.vue";
 import Authors from "./components/Authors.vue";
 

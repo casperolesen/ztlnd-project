@@ -1,5 +1,13 @@
 # zetland-project
 
+A demo-project build with vue.js using data from the open hacker news API provided by Ycombinator https://github.com/HackerNews/API
+
+## Description
+- The project displays info about the stories with highest score under 'Top Stories'
+- Subscribing to an author will display the most recent story from each subscribed authors in the 'Subscribed Feed'
+
+The subscribe feature is just a prototype for demonstrating an alternative way for displaying articles. No backend is set up for saving subscriptions.
+
 ## Project setup
 ```
 npm install
@@ -10,15 +18,23 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Architecture
+The project is build using the following folder setup
 
-### Lints and fixes files
-```
-npm run lint
-```
+### assets
+Folder containing static files
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### components
+Folder containing vue components
+
+### constants
+Folder containing custom data objects
+
+### services
+Folder containing all communication to the Hacker News API
+
+### util
+Folder containing functions used in project
+
+
+
