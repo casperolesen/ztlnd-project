@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Author from './Author.vue';
+import Author from "./Author.vue";
 import ButtonSelect from "./ButtonSelect.vue";
 
 export default {
@@ -38,5 +38,6 @@ export default {
 }
 .button-select {
   margin-right: 12px;
+  align-self: center;
 }
 </style>

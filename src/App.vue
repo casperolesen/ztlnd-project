@@ -1,18 +1,17 @@
 <template>
   <div v-if="loaded" class="container">
-    
     <div class="stories">
       <h3 class="column-header">Top Stories</h3>
       <Stories :stories="stories" />
     </div>
-    
+
     <div class="stories">
-      <h3 class="column-header">Feed</h3>
+      <h3 class="column-header">Subscribed Feed</h3>
       <div v-if="subscribedStories.length > 0">
-      <Stories :stories="subscribedStories" />
+        <Stories :stories="subscribedStories" />
       </div>
     </div>
-    
+
     <div class="authors">
       <h3 class="column-header">Authors</h3>
       <Authors
@@ -22,7 +21,7 @@
         :onclick="subscribeAuthor"
       />
     </div>
-    
+
     <div class="authors">
       <h3 class="column-header">Subscribed</h3>
       <div v-if="selected.length > 0">
@@ -35,7 +34,7 @@
       </div>
     </div>
   </div>
-  
+
   <div v-else>
     <p>Loading...</p>
   </div>
@@ -90,7 +89,6 @@ export default {
         const feedTemp = [...this.subscribedStories];
         feedTemp.push(latest);
         this.subscribedStories = sortByScore(feedTemp);
-
       }
     },
     unsubscribeAuthor(author) {
@@ -114,7 +112,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   color: #2c3e50;
   margin: 60px 60px;
 }

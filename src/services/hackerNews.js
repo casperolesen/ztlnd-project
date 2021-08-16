@@ -1,25 +1,6 @@
 import axios from 'axios';
+import { initStory, initAuthor, initComment } from '../constants/data';
 import { shuffleArray } from '../helpers';
-
-// Custom story object
-const initStory = {
-  id: '',
-  title: '',
-  url: '',
-  timestamp: '',
-  score: '',
-  authorId: '',
-  karmaScore: '',
-  commentsCount: '',
-  kids: [],
-  comments: [],
-};
-
-const initAuthor = {
-  id: '',
-  karma: '',
-  about: '',
-};
 
 // Get a list with up to 500 top stories
 export const getTopStories = async () => {
@@ -42,6 +23,7 @@ export const getAuthor = async (id) => {
   const res = await axios.get(
     `https://hacker-news.firebaseio.com/v0/user/${id}.json`
   );
+  console.log(id, res);
   return res.data;
 };
 
@@ -52,12 +34,13 @@ export const getComment = async (id) => {
   const { by, text, time, type } = res.data;
 
   if (type === 'comment') {
-    const comment = {
-      id,
-      by,
-      text,
-      time,
-    };
+    
+    const comment = {...initComment}
+
+    comment.id = id;
+    comment.by = by;
+    comment.text = text;
+    comment.time = time;
 
     return comment;
   }
@@ -163,17 +146,23 @@ export const getAuthorsList = async (numberOfAuthors) => {
   await Promise.all(
     stories.map(async (id) => {
       const { by } = await getStory(id);
-      const { karma, about } = await getAuthor(by);
+      const resAuthor = await getAuthor(by);
 
-      const author = { ...initAuthor };
+      if (resAuthor) {
+        const { karma, about } = resAuthor;
 
-      author.id = by;
-      author.karma = karma;
-      author.about = about;
+        const author = { ...initAuthor };
+  
+        author.id = by;
+        author.karma = karma;
+        author.about = about;
+  
+        map.has(author.id)
+          ? map.set(author, map.get(author.id) + 1)
+          : map.set(author, 1);
+      }
 
-      map.has(author.id)
-        ? map.set(author, map.get(author.id) + 1)
-        : map.set(author, 1);
+        
     })
   );
   return map;
