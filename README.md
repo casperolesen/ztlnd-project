@@ -9,13 +9,20 @@ A demo-project build with vue.js using data from the open hacker news API provid
 The subscribe feature is just a prototype for demonstrating an alternative way for displaying articles. No backend is set up for saving subscriptions.
 
 ## Project setup
+
+### Step 1 - install
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Step 2 - run
 ```
 npm run serve
+```
+
+### Step 3 - open
+```
+http://localhost:8080
 ```
 
 ## Architecture
