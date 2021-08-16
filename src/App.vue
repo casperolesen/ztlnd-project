@@ -6,8 +6,8 @@
     </div>
 
     <div class="stories">
-      <h3 class="column-header">Subscribed Feed</h3>
       <div v-if="subscribedStories.length > 0">
+        <h3 class="column-header">Subscribed Feed</h3>
         <Stories :stories="subscribedStories" />
       </div>
     </div>
